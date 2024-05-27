@@ -12,8 +12,8 @@ public class Persona {
         return this.genero;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setGenero(String genero) { //Parametro genero
+        this.genero = genero; //Mi genero va a ser igual al genero que me envian como parametro
     }
 
     public String getFechaNacimiento() {
