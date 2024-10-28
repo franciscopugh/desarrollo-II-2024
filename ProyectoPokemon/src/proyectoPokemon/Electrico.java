@@ -4,8 +4,8 @@ public abstract class Electrico extends Pokemon {
 	private int damImpactrueno;
 	private int damOndaAnomala;
 	
-	public Electrico(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, String tipo, int damImpactrueno, int damOndaAnomala) {
-		super(nombre, nivel, vida, ataque, defensa, velocidad, tipo);
+	public Electrico(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, int damImpactrueno, int damOndaAnomala) {
+		super(nombre, nivel, vida, ataque, defensa, velocidad, "Electrico");
 		this.damImpactrueno = damImpactrueno;
 		this.damOndaAnomala = damOndaAnomala;
 		// TODO Auto-generated constructor stub

@@ -4,8 +4,8 @@ public abstract class Agua extends Pokemon {
 	private int damHidrobomba;
 	private int damTorbellino;
 	
-	public Agua(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, String tipo, int damHidrobomba, int damTorbellino) {
-		super(nombre, nivel, vida, ataque, defensa, velocidad, tipo);
+	public Agua(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, int damHidrobomba, int damTorbellino) {
+		super(nombre, nivel, vida, ataque, defensa, velocidad, "Agua");
 		this.damHidrobomba = damHidrobomba;
 		this.damTorbellino = damTorbellino;
 	}

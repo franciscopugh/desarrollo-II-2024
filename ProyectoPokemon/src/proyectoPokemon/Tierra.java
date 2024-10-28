@@ -4,8 +4,8 @@ public abstract class Tierra extends Pokemon {
 	private int damFisura;
 	private int damTerremoto;
 	
-	public Tierra(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, String tipo, int damFisura, int damTerremoto) {
-		super(nombre, nivel, vida, ataque, defensa, velocidad, tipo);
+	public Tierra(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, int damFisura, int damTerremoto) {
+		super(nombre, nivel, vida, ataque, defensa, velocidad, "Tierra");
 		this.damFisura = damFisura;
 		this.damTerremoto = damTerremoto;
 	}

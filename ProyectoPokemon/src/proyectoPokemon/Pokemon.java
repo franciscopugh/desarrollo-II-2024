@@ -23,10 +23,12 @@ public abstract class Pokemon {
     }
 
     public void recibirDaño(int daño) {
-        this.vida -= daño;
-        System.out.println(getNombre() + " recibió " + daño + " puntos de daño. Vida restante: " + getVida());
+        this.vida -= daño; 
+        
         if (getVida() <= 0) {
-            System.out.println(getNombre() + " ha sido derrotado.");
+        	System.out.println(getNombre() + " recibió " + daño + " puntos de daño y ha sido derrotado");
+        } else {
+        	System.out.println(getNombre() + " recibió " + daño + " puntos de daño. Vida restante: " + getVida());
         }
     }
 
@@ -53,10 +55,10 @@ public abstract class Pokemon {
         experiencia -= experienciaPorNivel; // Restamos la experiencia necesaria para subir de nivel
         System.out.println(getNombre() + " ha subido al nivel " + getNivel());
 
-        vida += vida * 0.10; 
-        ataque += ataque * 0.10; 
+        vida += vida * 0.50; 
+        ataque += ataque * 0.50; 
 
-        System.out.println("Los atributos de " + getNombre() + " han aumentado:");
+        System.out.println("Los atributos vida y ataque base de " + getNombre() + " han aumentado en un 50%");
    
     }
     

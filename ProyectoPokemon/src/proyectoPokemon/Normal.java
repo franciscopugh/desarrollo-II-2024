@@ -4,8 +4,8 @@ public abstract class Normal extends Pokemon{
 	private int damAtaqueRapido;
 	private int damLatigo;
 	
-	public Normal(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, String tipo, int damAtaqueRapido, int damLatigo) {
-		super(nombre, nivel, vida, ataque, defensa, velocidad, tipo);
+	public Normal(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, int damAtaqueRapido, int damLatigo) {
+		super(nombre, nivel, vida, ataque, defensa, velocidad, "Normal");
 		this.damAtaqueRapido = damAtaqueRapido;
 		this.damLatigo = damLatigo;
 	}
