@@ -5,19 +5,15 @@ public abstract class Pokemon {
 	private int nivel;
 	private int vida;
 	private int ataque;
-	private int defensa;
-	private int velocidad;
 	private int experiencia;
 	private String tipo;
 	private int experienciaPorNivel = 100;
 
-    public Pokemon(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, String tipo) {
+    public Pokemon(String nombre, int nivel, int vida, int ataque, String tipo) {
         this.nombre = nombre;
         this.nivel = nivel;
-        this.vida = vida;
-        this.ataque = ataque;
-        this.defensa = defensa;
-        this.velocidad = velocidad;
+        this.vida = vida * nivel;
+        this.ataque = ataque * nivel;
         this.tipo = tipo;
         this.experiencia = 0;
     }
@@ -62,7 +58,13 @@ public abstract class Pokemon {
    
     }
     
+    public boolean estaVivo() {
+    	return getVida() > 0;
+    }
+    
     public abstract void atacar(Pokemon enemigo, String ataque);
+    
+    public abstract String elegirAtaque();
     
     public String getNombre() {
         return nombre;
@@ -96,22 +98,6 @@ public abstract class Pokemon {
         this.ataque = ataque;
     }
 
-    public int getDefensa() {
-        return defensa;
-    }
-
-    public void setDefensa(int defensa) {
-        this.defensa = defensa;
-    }
-
-    public int getVelocidad() {
-        return velocidad;
-    }
-
-    public void setVelocidad(int velocidad) {
-        this.velocidad = velocidad;
-    }
-
     public String getTipo() {
         return tipo;
     }
@@ -127,4 +113,6 @@ public abstract class Pokemon {
     public void setTipo(int experiencia) {
         this.experiencia = experiencia;
     }
+
+	
 }

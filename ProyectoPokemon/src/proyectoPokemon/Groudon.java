@@ -2,9 +2,9 @@ package proyectoPokemon;
 
 public class Groudon extends Tierra {
 
-	public Groudon(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad,
+	public Groudon(String nombre, int nivel, int vida, int ataque,
 			int damFisura, int damTerremoto) {
-		super(nombre, nivel, vida, ataque, defensa, velocidad, damFisura, damTerremoto);
+		super(nombre, nivel, vida, ataque, damFisura, damTerremoto);
 	}
 
 }

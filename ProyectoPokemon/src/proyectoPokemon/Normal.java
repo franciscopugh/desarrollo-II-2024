@@ -1,11 +1,13 @@
 package proyectoPokemon;
 
+import java.util.Scanner;
+
 public abstract class Normal extends Pokemon{
 	private int damAtaqueRapido;
 	private int damLatigo;
 	
-	public Normal(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, int damAtaqueRapido, int damLatigo) {
-		super(nombre, nivel, vida, ataque, defensa, velocidad, "Normal");
+	public Normal(String nombre, int nivel, int vida, int ataque, int damAtaqueRapido, int damLatigo) {
+		super(nombre, nivel, vida, ataque, "Normal");
 		this.damAtaqueRapido = damAtaqueRapido;
 		this.damLatigo = damLatigo;
 	}
@@ -30,6 +32,28 @@ public abstract class Normal extends Pokemon{
         	ataqueBase(enemigo);
         }
 		
+	}
+	
+	@Override
+	public String elegirAtaque() {
+		Scanner scanner = new Scanner(System.in);
+        System.out.println("Jugador, eliga tu ataque:");
+        System.out.println("1. Ataque Rapido");
+        System.out.println("2. Latigo");
+        System.out.println("3. Ataque base");
+        int eleccion = scanner.nextInt();
+
+        switch (eleccion) {
+            case 1:
+                return "Ataque Rapido";
+            case 2:
+                return "Latigo";
+            case 3:
+                return "Ataque Base";   
+            default:
+                System.out.println("Opción inválida, se usará Ataque Base por defecto.");
+                return "Ataque base";
+        }
 	}
 	
 	public int getDamAtaqueRapido() {

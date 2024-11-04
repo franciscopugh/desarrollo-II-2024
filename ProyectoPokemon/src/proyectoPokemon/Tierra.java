@@ -1,11 +1,13 @@
 package proyectoPokemon;
 
+import java.util.Scanner;
+
 public abstract class Tierra extends Pokemon {
 	private int damFisura;
 	private int damTerremoto;
 	
-	public Tierra(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, int damFisura, int damTerremoto) {
-		super(nombre, nivel, vida, ataque, defensa, velocidad, "Tierra");
+	public Tierra(String nombre, int nivel, int vida, int ataque, int damFisura, int damTerremoto) {
+		super(nombre, nivel, vida, ataque,"Tierra");
 		this.damFisura = damFisura;
 		this.damTerremoto = damTerremoto;
 	}
@@ -30,6 +32,29 @@ public abstract class Tierra extends Pokemon {
        	ataqueBase(enemigo);
        }
 		
+	}
+	
+	@Override
+	public String elegirAtaque() {
+		Scanner scanner = new Scanner(System.in);
+        System.out.println("Jugador, eliga tu ataque:");
+        System.out.println("1. Fisura");
+        System.out.println("2. Terremoto");
+        System.out.println("3. Ataque Base");
+        
+        int eleccion = scanner.nextInt();
+
+        switch (eleccion) {
+            case 1:
+                return "Fisura";
+            case 2:
+                return "Terremoto";
+            case 3:
+                return "Ataque Base";
+            default:
+                System.out.println("Opción inválida, se usará Ataque Base por defecto.");
+                return "Ataque base";
+        }
 	}
 	
 	 public int getDamFisura() {
