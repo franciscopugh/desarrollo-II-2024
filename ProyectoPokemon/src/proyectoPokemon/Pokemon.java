@@ -6,6 +6,7 @@ public abstract class Pokemon {
 	private int vida;
 	private int ataque;
 	private int experiencia;
+	private String estado;
 	private String tipo;
 	private int experienciaPorNivel = 100;
 
@@ -15,7 +16,9 @@ public abstract class Pokemon {
         this.vida = vida * nivel;
         this.ataque = ataque * nivel;
         this.tipo = tipo;
+        this.estado = "Normal";
         this.experiencia = 0;
+        
     }
 
     public void recibirDaño(int daño) {
@@ -51,10 +54,10 @@ public abstract class Pokemon {
         experiencia -= experienciaPorNivel; // Restamos la experiencia necesaria para subir de nivel
         System.out.println(getNombre() + " ha subido al nivel " + getNivel());
 
-        vida += vida * 0.50; 
-        ataque += ataque * 0.50; 
+        vida += vida * 2; 
+        ataque += ataque * 2; 
 
-        System.out.println("Los atributos vida y ataque base de " + getNombre() + " han aumentado en un 50%");
+        System.out.println("Los atributos vida y ataque base de " + getNombre() + " han aumentado el doble");
    
     }
     
@@ -65,6 +68,8 @@ public abstract class Pokemon {
     public abstract void atacar(Pokemon enemigo, String ataque);
     
     public abstract String elegirAtaque();
+    
+    public abstract void aplicarEfecto(Pokemon enemigo, int probabilidad);
     
     public String getNombre() {
         return nombre;
@@ -113,6 +118,15 @@ public abstract class Pokemon {
     public void setTipo(int experiencia) {
         this.experiencia = experiencia;
     }
+    
+    public String getEstado() {
+        return estado;
+    }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    
 	
 }

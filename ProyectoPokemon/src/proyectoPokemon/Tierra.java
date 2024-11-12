@@ -1,10 +1,12 @@
 package proyectoPokemon;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public abstract class Tierra extends Pokemon {
 	private int damFisura;
 	private int damTerremoto;
+	private int multiplicador = 1;
 	
 	public Tierra(String nombre, int nivel, int vida, int ataque, int damFisura, int damTerremoto) {
 		super(nombre, nivel, vida, ataque,"Tierra");
@@ -14,12 +16,23 @@ public abstract class Tierra extends Pokemon {
 	
 	public void fisura(Pokemon enemigo) {
 	     System.out.println(getNombre() + " usa Fisura.");
-	     enemigo.recibirDaño(getDamFisura() * getNivel());
+	     if(enemigo.getTipo() == "Electrico" ) {
+	        	multiplicador = 2;
+	        } else if(enemigo.getTipo() == "Fuego") {
+	        	multiplicador = 0;
+	        }
+	     enemigo.recibirDaño(getDamFisura() * getNivel() * multiplicador);
+	     
 	}
 
 	public void terremoto(Pokemon enemigo) {
 	     System.out.println(getNombre() + " usa Terremoto.");
-	     enemigo.recibirDaño(getDamTerremoto() * getNivel());
+	     if(enemigo.getTipo() == "Electrico" ) {
+	        	multiplicador = 2;
+	        } else if(enemigo.getTipo() == "Fuego") {
+	        	multiplicador = 0;
+	     }
+	     enemigo.recibirDaño(getDamTerremoto() * getNivel() * multiplicador);
 	}
 
 	@Override
@@ -56,6 +69,23 @@ public abstract class Tierra extends Pokemon {
                 return "Ataque base";
         }
 	}
+	
+	@Override
+    public void aplicarEfecto(Pokemon enemigo, int probabilidad) {
+		Random random = new Random();
+
+	     if (random.nextInt(100) < probabilidad) {
+	    	 if(enemigo.getTipo() != "Fuego" && enemigo.getTipo() != "Tierra") {
+	    		 enemigo.setEstado("Aplastado");
+		         System.out.println(enemigo.getNombre() + " ha sido paralizado.");
+	    	 } else {
+	    		 System.out.println(enemigo.getNombre() + " no ha sido afectado por paralisis.");
+	    	 }
+	           
+	     } else {
+	            System.out.println(enemigo.getNombre() + " no ha sido afectado por paralisis.");
+	      }
+    }
 	
 	 public int getDamFisura() {
 	     return damFisura;

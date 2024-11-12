@@ -1,5 +1,9 @@
 package proyectoPokemon;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class Batalla {
 
     private Pokemon p1;
@@ -28,10 +32,12 @@ public class Batalla {
             System.out.println(p1.getNombre() + " ha ganado la batalla!");
             p1.ganarExperiencia(100);
             p2.ganarExperiencia(50);
+            registrarBatalla(p1.getNombre(), p2.getNombre(), p1.getNombre(), 100, 50);
         } else {
             System.out.println(p2.getNombre() + " ha ganado la batalla!");
             p2.ganarExperiencia(100);
             p1.ganarExperiencia(50);
+            registrarBatalla(p1.getNombre(), p2.getNombre(), p2.getNombre(), 50, 100);
         }
     }
 
@@ -40,6 +46,24 @@ public class Batalla {
         atacante.atacar(defensor, atacante.elegirAtaque());
         if (!defensor.estaVivo()) {
             System.out.println(defensor.getNombre() + " ha sido derrotado.");
+        }
+    }
+    
+    // Registra los resultados de la batalla en la base de datos
+    private void registrarBatalla(String nombreP1, String nombreP2, String ganador, int expP1, int expP2) {
+        String insertSQL = "INSERT INTO batallas (nombre_pokemon1, nombre_pokemon2, ganador, experiencia_ganada_p1, experiencia_ganada_p2) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+            pstmt.setString(1, nombreP1);
+            pstmt.setString(2, nombreP2);
+            pstmt.setString(3, ganador);
+            pstmt.setInt(4, expP1);
+            pstmt.setInt(5, expP2);
+            pstmt.executeUpdate();
+            System.out.println("La batalla ha sido registrada en la base de datos.");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

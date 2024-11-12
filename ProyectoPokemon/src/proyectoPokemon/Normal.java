@@ -56,6 +56,11 @@ public abstract class Normal extends Pokemon{
         }
 	}
 	
+	@Override
+    public void aplicarEfecto(Pokemon enemigo, int probabilidad) {
+       
+    }
+	
 	public int getDamAtaqueRapido() {
         return damAtaqueRapido;
     }
